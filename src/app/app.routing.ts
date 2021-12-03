@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
-const routes: Routes =[
-  {
+export const routes: Routes =[
+  /* {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
@@ -17,18 +15,24 @@ const routes: Routes =[
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
-  }
+  } */
+  {
+    path: 'pages',
+    loadChildren: () => import('./layouts/admin-layout/admin-layout.module')
+      .then(m => m.AdminLayoutModule)
+  },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'pages' },
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
-    BrowserModule,
+    /* CommonModule,
+    BrowserModule, */
     RouterModule.forRoot(routes,{
-       useHash: true
+       useHash: false
     })
-  ],
-  exports: [
-  ],
+  ]
 })
 export class AppRoutingModule { }
