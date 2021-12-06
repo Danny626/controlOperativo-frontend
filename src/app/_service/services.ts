@@ -6,3 +6,5 @@ export { RecintoService } from "./recinto.service";
 export { UsuarioService } from "./usuario.service";
 export { GuardService } from "./guard.service";
 export { CargaArchivoService } from "./carga-archivo.service";
+export { AppDictionaryService } from './app-dictionary.service';
+export { AppUtilityService } from './app-utility.service';

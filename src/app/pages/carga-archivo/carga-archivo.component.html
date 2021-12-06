@@ -1,1 +1,86 @@
-<p>carga-archivo works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Cargar Excel</h4>
+                        <p class="card-category">Carga archivo excel con datos de Partes de Recepción Suma</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <app-file-uploader
+                                    [config]="file_upload_config">
+                                </app-file-uploader>
+                                <!-- <mat-form-field appearance="fill" class="example-full-width">
+                                <mat-label>Placa</mat-label>
+                                <input matInput id="excelFile" placeholder="Seleccione un archivo" type="file" 
+                                    (change)="selectFile($event)" required>
+                                <mat-error *ngIf="hasError('required')">Por favor ingrese un archivo</mat-error>
+                                </mat-form-field> -->
+                            </div>
+                        </div>
+
+                        <!-- <button style="float: right;" mat-raised-button type="submit" class="btn btn-danger pull-right" 
+                            [disabled]="!selectedFiles || admincheck || status" (click)="cargarExcel()">Cargar Archivo</button> -->
+
+                        <div class="clearfix"></div>
+
+                        <!-- <div class="table-responsive">
+                            <table mat-table class="table table-hover" [dataSource]="dataSourcePesajes">
+
+                                <ng-container matColumnDef="placa">
+                                    <th mat-header-cell *matHeaderCellDef> Placa </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.placa }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="pesoBruto">
+                                    <th mat-header-cell *matHeaderCellDef> Peso Bruto </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.pesoBruto }} </td>
+                                </ng-container>
+                                
+                                <ng-container matColumnDef="pesoTara">
+                                    <th mat-header-cell *matHeaderCellDef> Peso Tara </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.pesoTara || 0 }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="pesoNeto">
+                                    <th mat-header-cell *matHeaderCellDef> Peso Neto </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.pesoNeto || 0 }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="operacion">
+                                    <th mat-header-cell *matHeaderCellDef> Operación </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.operacion.nombre }} </td>
+                                </ng-container>
+                                
+                                <ng-container matColumnDef="fecha">
+                                    <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ psj.fecha | date:'dd/MM/YYYY HH:mm:ss' }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="recintoCod">
+                                    <th mat-header-cell *matHeaderCellDef> Recinto </th>
+                                    <td mat-cell *matCellDef="let psj"> {{ recintoNombre }} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            </table>
+
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                            showFirstLastButtons 
+                                            aria-label="Seleccione una página">
+                            </mat-paginator>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

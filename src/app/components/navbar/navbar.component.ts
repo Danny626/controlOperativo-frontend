@@ -1,18 +1,20 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PATH_ROOT } from 'app/_shared/var.constant';
-import { 
-    LoginService
+import { Usuario } from 'app/_model/usuario';
+import {
+    LoginService,
+    UsuarioService
 } from 'app/_service/services';
+import { PATH_ROOT } from 'app/_shared/var.constant';
+import { ROUTES } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit  {
 
     private listTitles: any[];
     location: Location;
@@ -29,14 +31,19 @@ export class NavbarComponent implements OnInit {
         private element: ElementRef, 
         private router: Router,
         public loginService: LoginService,
+        public usuarioService: UsuarioService,
         /* private recintoService: RecintoService */
     ) {
-      this.location = location;
-          this.sidebarVisible = false;
+        this.location = location;
+        this.sidebarVisible = false;
     }
 
     ngOnInit(){
-        this.recintoNombre = this.loginService.getNombreRecintoActivo();
+        this.usuarioService.listarUsuarioPorId(this.loginService.getUserNameFromToken())
+            .subscribe((usuario: Usuario) => {
+                this.recintoNombre = usuario.recinto.nombre;
+            });
+
         this.getUserNameLogged();
 
         this.listTitles = ROUTES.filter(listTitle => listTitle);

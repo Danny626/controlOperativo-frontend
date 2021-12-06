@@ -75,8 +75,6 @@ export class LoginComponent implements OnInit, OnDestroy {
               .subscribe( (respUsuario: Usuario) => {
                 const token = JSON.stringify(res);
                 sessionStorage.setItem(TOKEN_NAME, token);
-                sessionStorage.setItem('recintoCod', respUsuario.recinto.recCod);
-                sessionStorage.setItem('recintoNombre', respUsuario.recinto.nombre);
                 this.router.navigate(['pages']);
               })
           }

@@ -7,6 +7,9 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 
 import { HOST, TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME, TOKEN_NAME } from '../_shared/var.constant';
 import { JwtDecode } from 'app/_dto/jwtDecode';
+import { Recinto } from 'app/_model/recinto';
+import { Usuario } from 'app/_model/usuario';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +17,14 @@ import { JwtDecode } from 'app/_dto/jwtDecode';
 export class LoginService implements OnDestroy {
 
   url: string = `${HOST}/oauth/token`;
+  private recinto: Recinto;
   private subscription: Subscription;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private usuarioService: UsuarioService,
+    ) {
   }
 
   ngOnDestroy() {
@@ -58,11 +66,6 @@ export class LoginService implements OnDestroy {
     }
     return '';
   }
-
-  getNombreRecintoActivo() {
-    return sessionStorage.getItem('recintoNombre');
-  }
-
 
   // enviarCorreo(correo: string) {
   //   return this.http.post<number>(`${HOST}/login/enviarCorreo`, correo, {
