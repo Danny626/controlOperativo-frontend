@@ -5,6 +5,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { CargaArchivoModule } from 'app/pages/carga-archivo/carga-archivo.module';
 import { ComponentsModule } from 'app/components/components.module';
 import { AdminLayoutComponent } from './admin-layout.component';
+import { DescargaPartesSumaModule } from 'app/pages/descarga-partes-suma/descarga-partes-suma.module';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { AdminLayoutComponent } from './admin-layout.component';
     RouterModule,
     AdminLayoutRoutes,
     ComponentsModule,
-    CargaArchivoModule
+    CargaArchivoModule,
+    DescargaPartesSumaModule
   ],
   declarations: [
     AdminLayoutComponent

@@ -42,6 +42,7 @@ export class NavbarComponent implements OnInit  {
         this.usuarioService.listarUsuarioPorId(this.loginService.getUserNameFromToken())
             .subscribe((usuario: Usuario) => {
                 this.recintoNombre = usuario.recinto.nombre;
+                this.loginService.setRecintoActual(usuario.recinto);
             });
 
         this.getUserNameLogged();

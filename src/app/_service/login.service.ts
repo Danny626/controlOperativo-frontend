@@ -8,7 +8,6 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import { HOST, TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME, TOKEN_NAME } from '../_shared/var.constant';
 import { JwtDecode } from 'app/_dto/jwtDecode';
 import { Recinto } from 'app/_model/recinto';
-import { Usuario } from 'app/_model/usuario';
 import { UsuarioService } from './usuario.service';
 
 @Injectable({
@@ -65,6 +64,14 @@ export class LoginService implements OnDestroy {
       return decodedToken.user_name;
     }
     return '';
+  }
+
+  getRecintoActual() {
+    return this.recinto;
+  }
+
+  setRecintoActual(recinto : Recinto) {
+    this.recinto = recinto;
   }
 
   // enviarCorreo(correo: string) {

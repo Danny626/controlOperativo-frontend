@@ -14,6 +14,7 @@ export class ErrorDialogService {
   ) {}
 
   openDialog(message: string, status?: number): void {
+    console.log(message);
     if (!this.opened) {
       this.opened = true;
       const dialogRef = this.dialog.open(ErrorDialogComponent, {

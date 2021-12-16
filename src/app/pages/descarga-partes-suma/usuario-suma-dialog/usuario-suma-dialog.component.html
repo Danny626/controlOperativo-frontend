@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Usuario Suma</h1>
+
+<form [formGroup]="formDatosUsuario" (ngSubmit)="onOkClick()">
+  <div mat-dialog-content>
+    <p>Ingrese los datos de su usuario suma</p>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <input matInput placeholder="Ingrese su usuario suma" formControlName="nombreUsuario">
+      <mat-error *ngIf="formDatosUsuario.controls.nombreUsuario.hasError('required')">Por favor ingrese su usuario suma</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Ingrese su contraseña suma" [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="formDatosUsuario.controls.password.hasError('required')">Por favor ingrese su contraseña suma</mat-error>
+    </mat-form-field>
+  
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancelar</button>
+    <button mat-button type="submit" [disabled]="!formDatosUsuario.valid" cdkFocusInitial>Descargar</button>
+  </div>
+</form>
