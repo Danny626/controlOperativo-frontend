@@ -37,6 +37,9 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
   usuarioSuma: string;
   passwordSuma: string;
 
+  minDate: Date;
+  maxDate: Date;
+
   partesSuma: ParteSuma[] = [];
 
   displayedColumns: string[] = [
@@ -71,10 +74,14 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
     private infoDialogService: InfoDialogService,
     public dialog: MatDialog
   ) {
+    const currentDate = new Date();
+    this.minDate = currentDate;
+    this.maxDate = currentDate;
+
     this.formDescarga = new FormGroup({
       'estadoParteSuma': new FormControl('', [Validators.required]),
-      'fechaInicial': new FormControl('', [Validators.required]),
-      'fechaFinal': new FormControl('', [Validators.required]),
+      'fechaInicial': new FormControl(new Date(), [Validators.required]),
+      /* 'fechaFinal': new FormControl(''), */
     });
    }
 
@@ -162,8 +169,11 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
   // obtiene el objeto ParamsMisPartesSuma según el tipo de recinto(AEROPUERTO, INTERIOR)
   getParamsMisPartesSuma(tipoRecinto: string): ParamsMisPartesSuma {
     const paramsMisPartesSuma = new ParamsMisPartesSuma();
+    /* const fechaInicial = this.formDescarga.value['fechaInicial'];
+    const fechaFinal = this.formDescarga.value['fechaInicial']; */
+
     const fechaInicial = this.formDescarga.value['fechaInicial'];
-    const fechaFinal = this.formDescarga.value['fechaFinal'];
+    const fechaFinal = fechaInicial;
 
     return paramsMisPartesSuma.getParamsMisPartesSuma(tipoRecinto, fechaInicial, fechaFinal, '');
   }
