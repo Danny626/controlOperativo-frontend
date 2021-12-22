@@ -28,7 +28,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   bootstrap: [AppComponent],
   providers: [

@@ -8,51 +8,13 @@
                         <p class="card-category">Descarga de Partes de Recepción Suma</p>
                     </div>
                     <div class="card-body">
-                        <form [formGroup]="formDescarga" (ngSubmit)="openUsuarioSumaDialog()">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Estado Operación</mat-label>
-                                        <mat-select placeholder="Seleccione un estado" name="estadoParte" formControlName="estadoParteSuma" required>
-                                            <mat-option value="PROCESO">En Proceso</mat-option>
-                                            <mat-option value="CONCLUIDO">Concluido</mat-option>
-                                        </mat-select>
-                                        <mat-error *ngIf="formDescarga.controls.estadoParteSuma.hasError('required')">Por favor seleccione un estado</mat-error>
-                                    </mat-form-field>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <mat-form-field appearance="fill" class="example-full-width">
-                                        <mat-label>Fecha</mat-label>
-                                        <input matInput [max]="maxDate" placeholder="Ejm. 31-01-2021" [matDatepicker]="pickerDate" 
-                                            formControlName="fechaInicial" (keydown)="false" (click)="pickerDate.open()"
-                                            autocomplete="off" required>
-                                        <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
-                                        <mat-datepicker #pickerDate></mat-datepicker>
-
-                                        <mat-error *ngIf="formDescarga.controls.fechaInicial.hasError('invalidDate')">Fecha inválida</mat-error>
-                                        <mat-error *ngIf="formDescarga.controls.fechaInicial.hasError('required')">Por favor seleccione una fecha</mat-error>
-                                    </mat-form-field>
-                                </div>
-
-                                        <!-- <mat-label>Ingrese un rango de fechas</mat-label>
-                                        <mat-date-range-input [rangePicker]="pickerRangeDates" (click)="pickerRangeDates.open()" autocomplete="off" required>
-                                            <input matStartDate formControlName="fechaInicial" placeholder="Fecha inicial" 
-                                                (keydown)="false">
-                                            <input matEndDate formControlName="fechaFinal" placeholder="Fecha final" (keydown)="false">
-                                        </mat-date-range-input>
-                                        <mat-datepicker-toggle matSuffix [for]="pickerRangeDates"></mat-datepicker-toggle>
-                                        <mat-date-range-picker #pickerRangeDates></mat-date-range-picker>
-                                        
-                                        <mat-error *ngIf="formDescarga.controls.fechaInicial.hasError('matStartDateInvalid')">Fecha inicial inválida</mat-error>
-                                        <mat-error *ngIf="formDescarga.controls.fechaFinal.hasError('matEndDateInvalid')">Fecha final inválida</mat-error> -->
-                            </div>
-
-                            <button style="float: right;" mat-raised-button type="submit" class="btn btn-danger pull-right" 
-                                [disabled]="!formDescarga.valid">Siguiente</button>
+                        <!-- <form> -->
+                            <button style="float: right;" mat-raised-button type="button" 
+                                class="btn btn-danger pull-right" onclick="sincronizarPartes()">
+                                Sincronizar
+                            </button>
                             <div class="clearfix"></div>
-                        </form>
-
+                        <!-- </form> -->
 
                         <div class="table-responsive">
                             <table mat-table class="table table-hover" [dataSource]="dataSourcePartesSuma">
@@ -137,10 +99,10 @@
 
                             </table>
 
-                            <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                                             showFirstLastButtons 
                                             aria-label="Seleccione una página">
-                            </mat-paginator> -->
+                            </mat-paginator>
                         </div>
                     </div>
                 </div>

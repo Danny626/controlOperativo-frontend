@@ -9,3 +9,4 @@ export { CargaArchivoService } from "./carga-archivo.service";
 export { AppDictionaryService } from './app-dictionary.service';
 export { AppUtilityService } from './app-utility.service';
 export { SumaService } from "./suma.service";
+export { ControlOperativoService } from "./control-operativo.service";
