@@ -7,6 +7,17 @@ export class EstadoParte {
         this.descripcion = descripcion;
     }
 
+    getEstadosParteSuma = () : EstadoParte[] => {
+        return [
+            new EstadoParte({nombre: 'REGISTRADO', descripcion: 'Registrado'}),
+            new EstadoParte({nombre: 'ACEPTADO', descripcion: 'Aceptado'}),
+            new EstadoParte({nombre: 'OBSERVADO', descripcion: 'Observado'}),
+            new EstadoParte({nombre: 'AGRUPADO', descripcion: 'Agrupado'}),
+            new EstadoParte({nombre: 'EN_REVISION', descripcion: 'En Revisión'}),
+            new EstadoParte({nombre: 'CONCLUIDO', descripcion: 'Concluido'}),
+        ];
+    }
+
     getEstadosEnProcesoParteSuma = () : EstadoParte[] => {
         return [
             new EstadoParte({nombre: 'REGISTRADO', descripcion: 'Registrado'}),

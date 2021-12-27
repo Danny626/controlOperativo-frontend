@@ -24,10 +24,15 @@ export class UsuarioSumaDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dialogRef.keydownEvents().subscribe(event => {
+      if (event.key === "Escape") {
+          this.onCancelClick();
+      }
+    });
   }
 
   onCancelClick() {
-    this.dialogRef.close();
+    this.dialogRef.close({nombreUsuario:'', password:'', tipo:''});
   }
 
   onOkClick() {

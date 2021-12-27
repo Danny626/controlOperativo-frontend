@@ -79,7 +79,7 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
     this.maxDate = currentDate;
 
     this.formDescarga = new FormGroup({
-      'estadoParteSuma': new FormControl('', [Validators.required]),
+      /* 'estadoParteSuma': new FormControl('', [Validators.required]), */
       'fechaInicial': new FormControl(new Date(), [Validators.required]),
       /* 'fechaFinal': new FormControl(''), */
     });
@@ -97,22 +97,29 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((result: BodyLoginSuma) => {
-      if ( result != null ) this.descargarPartes(result);
+      if ( result.nombreUsuario != '' ) this.descargarPartes(result);
     });
 
   }
 
-  // devuelve lista de estados partes suma en proceso
-  cargaEstadosEnProcesoParteSuma(): EstadoParte[] {
+  // devuelve lista de estados partes suma (todos)
+  cargaEstadosParteSuma(): EstadoParte[] {
     let estadoParte: EstadoParte = new EstadoParte();
-    return estadoParte.getEstadosEnProcesoParteSuma();
+    return estadoParte.getEstadosParteSuma();
   }
 
+  // devuelve lista de estados partes suma en proceso
+  /* cargaEstadosEnProcesoParteSuma(): EstadoParte[] {
+    let estadoParte: EstadoParte = new EstadoParte();
+    return estadoParte.getEstadosEnProcesoParteSuma();
+  } */
+
+
   // devuelve lista de estados partes suma concluidos
-  cargaEstadosConcluidoParteSuma(): EstadoParte[] {
+  /* cargaEstadosConcluidoParteSuma(): EstadoParte[] {
     let estadoParte: EstadoParte = new EstadoParte();
     return estadoParte.getEstadosConcluidoParteSuma();
-  }
+  } */
 
   descargarPartes(bodyLoginSuma: BodyLoginSuma) {    
     const usrName: string = this.loginService.getUserNameFromToken();
@@ -136,24 +143,27 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
       }
 
       this.infoDialogService.openDialog(
-        `${result.registrosGuardados} registros guardados de ${result.totalRegistros}`,
+        `${result.registrosGuardados} registros guardados o modificados de ${result.totalRegistros}`,
         estadoInfo
       );
     });
   }
 
-  // obtiene el objeto BodyMisPartesSuma según el estado seleccionado por el usuario
+  // obtiene el objeto BodyMisPartesSuma
   getBodyEstadosParteSuma(): BodyMisPartesSuma {
     let listaEstadosParteSuma: string[] = [];
     let estadosParteSuma: EstadoParte[] = [];
 
-    if(this.formDescarga.value['estadoParteSuma'] === 'PROCESO') {
+    /* if(this.formDescarga.value['estadoParteSuma'] === 'PROCESO') {
       estadosParteSuma = this.cargaEstadosEnProcesoParteSuma();
     }
 
     if(this.formDescarga.value['estadoParteSuma'] === 'CONCLUIDO') {
       estadosParteSuma = this.cargaEstadosConcluidoParteSuma();
-    }
+    } */
+
+    // cargamos todos los estados
+    estadosParteSuma = this.cargaEstadosParteSuma();
 
     estadosParteSuma.forEach(estado => {
       listaEstadosParteSuma.push(estado.nombre);
