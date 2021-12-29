@@ -29,7 +29,7 @@ const routes: Routes = [{
         },
         {
             path: '',
-            redirectTo: 'cargaArchivo',
+            redirectTo: 'descargaPartesSuma',
             pathMatch: 'full',
         },
         /*{ 

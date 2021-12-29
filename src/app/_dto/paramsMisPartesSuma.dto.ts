@@ -23,7 +23,7 @@ export class ParamsMisPartesSuma {
         const pageValue = 0;
         const sizeValue = 10;
         const tipPreAeropuerto = ['MANIFESTADO', 'NO_MANIFESTADO', 'CUSTODIO', 'CONSOLIDADO', 'COURIER'];
-        const tipPreInterior = ['MANIFESTADO', 'NO_MANIFESTADO', 'CUSTODIO', 'CONSOLIDADO'];
+        const tipPreInterior = ['MANIFESTADO', 'NO_MANIFESTADO', 'CUSTODIO', 'CONSOLIDADO', 'COURIER'];
         const columnValue = 'cor';
 
         let tipPre;
