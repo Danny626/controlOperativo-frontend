@@ -32,7 +32,7 @@ export class UsuarioSumaDialogComponent implements OnInit {
   }
 
   onCancelClick() {
-    this.dialogRef.close({nombreUsuario:'', password:'', tipo:''});
+    this.dialogRef.close(null);
   }
 
   onOkClick() {

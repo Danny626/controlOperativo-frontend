@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './admin-layout.component';
 import { CargaArchivoComponent } from 'app/pages/carga-archivo/carga-archivo.component';
 import { SyncPartesSumaComponent } from 'app/pages/sync-partes-suma/sync-partes-suma.component';
 import { DescargaPartesSumaComponent } from 'app/pages/descarga-partes-suma/descarga-partes-suma.component';
+import { ProgramadorTareasComponent } from 'app/pages/programador-tareas/programador-tareas.component';
 
 const routes: Routes = [{
     path: '',
@@ -25,6 +26,11 @@ const routes: Routes = [{
         { 
             path: 'syncPartesSuma',
             component: SyncPartesSumaComponent, 
+            canActivate: [GuardService] 
+        },
+        { 
+            path: 'programadorTareas',
+            component: ProgramadorTareasComponent, 
             canActivate: [GuardService] 
         },
         {

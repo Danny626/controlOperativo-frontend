@@ -6,6 +6,7 @@ import { CargaArchivoModule } from 'app/pages/carga-archivo/carga-archivo.module
 import { ComponentsModule } from 'app/components/components.module';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { DescargaPartesSumaModule } from 'app/pages/descarga-partes-suma/descarga-partes-suma.module';
+import { ProgramadorTareasModule } from 'app/pages/programador-tareas/programador-tareas.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { DescargaPartesSumaModule } from 'app/pages/descarga-partes-suma/descarg
     AdminLayoutRoutes,
     ComponentsModule,
     CargaArchivoModule,
-    DescargaPartesSumaModule
+    DescargaPartesSumaModule,
+    ProgramadorTareasModule
   ],
   declarations: [
     AdminLayoutComponent

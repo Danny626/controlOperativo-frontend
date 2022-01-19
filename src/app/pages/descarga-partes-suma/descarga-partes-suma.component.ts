@@ -97,7 +97,9 @@ export class DescargaPartesSumaComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((result: BodyLoginSuma) => {
-      if ( result.nombreUsuario != '' ) this.descargarPartes(result);
+      if ( result !== null ) {
+        this.descargarPartes(result)
+      };
     });
 
   }

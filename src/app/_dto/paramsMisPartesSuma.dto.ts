@@ -27,7 +27,7 @@ export class ParamsMisPartesSuma {
         const columnValue = 'cor';
 
         let tipPre;
-        const paramsMisPartesSuma: ParamsMisPartesSuma = new ParamsMisPartesSuma();
+        const paramsMisPartesSuma = new ParamsMisPartesSuma();
 
         if(tipoRecinto === 'AEROPUERTO') {
             tipPre = tipPreAeropuerto;

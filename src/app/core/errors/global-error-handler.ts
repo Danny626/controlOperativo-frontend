@@ -37,11 +37,12 @@ export class GlobalErrorHandler implements ErrorHandler {
 
   handleError(error: any) {
     let mensaje: string;
+    console.log(error);
 
     // Check if it's an error from an HTTP response
     if (!(error instanceof HttpErrorResponse)) {
       // error = error.rejection; // get the error object
-      mensaje = error?.message || 'Undefined client error';
+      mensaje = error?.error || 'Undefined client error';
       this.sendError(mensaje);
 
     } else {
@@ -78,7 +79,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         mensaje = 'No se pudo conectar con el Recinto seleccionado. Por favor intente nuevamente más tarde.';
       }
 
-      this.sendError(mensaje);
+      this.sendError(mensaje || error.error);
     }
 
 
