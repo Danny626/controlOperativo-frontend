@@ -77,7 +77,7 @@ export class ProgramadorTareasComponent implements OnInit {
       usuario: this.loginService.getUserNameFromToken(),
       token: '',
       bodyMisPartesSuma: {
-        estadoParte: estadoParte.getEstadosEnProcesoParteSuma().map((estado: EstadoParte) => estado.nombre)
+        estadoParte: estadoParte.getEstadosParteSuma().map((estado: EstadoParte) => estado.nombre)
       },
       paramsMisPartesSuma: paramsMisPartesSuma.getParamsMisPartesSuma('INTERIOR', fechaActual, fechaActual, ''),
       bodyLoginSuma: {
