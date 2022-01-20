@@ -138,8 +138,18 @@ export class ProgramadorTareasComponent implements OnInit {
           });
       };
     });
+  }
 
-    
+  eliminarTarea(idTarea: number) {
+    this.tareaService.eliminar(idTarea)
+      .subscribe(responseEliminar => {
+        this.infoDialogService.openDialog(
+          `Tarea eliminada`,
+          'success'
+          );
+          
+        this.listarTareas();
+      });
   }
 
 }
