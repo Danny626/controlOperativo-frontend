@@ -11,11 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { SharedModule } from 'app/_shared/shared.module';
 import { ProgramadorTareasComponent } from './programador-tareas.component';
+import { TareaDialogComponent } from './tarea-dialog/tarea-dialog.component';
 
 
 @NgModule({
   declarations: [
-    ProgramadorTareasComponent
+    ProgramadorTareasComponent,
+    TareaDialogComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,124 @@
+<h1 mat-dialog-title>Tarea</h1>
+
+<form [formGroup]="formTarea" (ngSubmit)="onAceptar()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="example-full-width">
+          <mat-label>Tarea</mat-label>
+          <input
+            matInput
+            placeholder="Nombre de la tarea"
+            type="text"
+            formControlName="nombre"
+            required
+          />
+          <mat-error *ngIf="formTarea.controls.nombre.hasError('required')"
+            >Por favor ingrese un nombre</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Tipo</mat-label>
+          <mat-select [(value)]="tipoSelec" formControlName="tipo" required>
+            <mat-option value="CARGA_PARTES_SUMA">Carga Partes Suma</mat-option>
+          </mat-select>
+          <mat-error *ngIf="formTarea.controls.tipo.hasError('required')"
+            >Por favor ingrese un tipo</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-3">
+        <mat-form-field class="example-full-width">
+          <mat-label>Recinto</mat-label>
+          <mat-select
+            [(value)]="recintoSelec"
+            formControlName="recinto"
+            required
+          >
+            <mat-option *ngFor="let rec of recintos" [value]="rec.recCod">
+              {{ rec.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formTarea.controls.recinto.hasError('required')"
+            >Por favor seleccione un recinto</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-2">
+        <mat-form-field class="example-full-width">
+          <mat-label>Cron</mat-label>
+          <input
+            matInput
+            placeholder="Cron de la tarea"
+            type="text"
+            formControlName="cron"
+            required
+          />
+          <mat-error *ngIf="formTarea.controls.cron.hasError('required')"
+            >Por favor ingrese un cron</mat-error
+          >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="example-full-width">
+          <mat-label>Usuario Suma</mat-label>
+          <input
+            matInput
+            placeholder="Usuario SUMA"
+            type="text"
+            formControlName="usuarioSuma"
+            required
+          />
+          <mat-error *ngIf="formTarea.controls.usuarioSuma.hasError('required')"
+            >Por favor ingrese un usuario SUMA</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="example-full-width">
+          <mat-label>Contraseña Suma</mat-label>
+          <input
+            matInput
+            placeholder="Contraseña SUMA"
+            [type]="hide ? 'password' : 'text'"
+            formControlName="passwordSuma"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <!-- <mat-error
+            *ngIf="formTarea.controls.passwordSuma.hasError('required')"
+            >Por favor ingrese un password SUMA</mat-error
+          > -->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button
+      mat-button
+      type="submit"
+      [disabled]="!formTarea.valid"
+      cdkFocusInitial
+    >
+      Guardar
+    </button>
+  </div>
+</form>

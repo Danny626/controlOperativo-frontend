@@ -16,6 +16,7 @@ import {
   LoginService
 } from 'app/_service/services';
 import { ParamsMisPartesSuma } from 'app/_dto/paramsMisPartesSuma.dto';
+import { TareaDialogComponent } from './tarea-dialog/tarea-dialog.component';
 
 @Component({
   selector: 'app-programador-tareas',
@@ -39,6 +40,7 @@ export class ProgramadorTareasComponent implements OnInit {
     'cron',
     'body',
     'recinto',
+    'accionesTarea'
   ];
 
   hide = true;
@@ -98,7 +100,7 @@ export class ProgramadorTareasComponent implements OnInit {
     this.tareaService.registrar(tareaCreada)
       .subscribe((responseTarea: Tarea) => {
         this.infoDialogService.openDialog(
-          `Tarea creada -> ${responseTarea.nombre}`,
+          `Tarea ${responseTarea.nombre} creada`,
           'success'
         );
 
@@ -116,6 +118,28 @@ export class ProgramadorTareasComponent implements OnInit {
   listarTareas() {
     this.tareaService.listarTareas()
       .subscribe(responseTareas => this.dataSourceTareas.data = responseTareas);
+  }
+
+  modificarTarea(tarea: Tarea) {
+    const dialogRef = this.dialog.open(TareaDialogComponent, {
+      data: tarea
+    });
+
+    dialogRef.afterClosed().subscribe(tareaModificada => {
+      if ( tareaModificada !== null ) {
+        this.tareaService.modificar(tareaModificada)
+          .subscribe(( responseTareaModificada: Tarea ) => {
+            this.infoDialogService.openDialog(
+              `Tarea ${responseTareaModificada.nombre} modificada`,
+              'success'
+              );
+
+            this.listarTareas();
+          });
+      };
+    });
+
+    
   }
 
 }
