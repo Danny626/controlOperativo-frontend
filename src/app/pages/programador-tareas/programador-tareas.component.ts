@@ -74,6 +74,7 @@ export class ProgramadorTareasComponent implements OnInit {
     const estadoParte = new EstadoParte();
     const paramsMisPartesSuma = new ParamsMisPartesSuma();
     const fechaActual = new Date();
+    const recintoValue: Recinto = this.formTarea.value['recinto'];
     
     const bodyRegistroParteSuma: BodyRegistroParteSuma = {
       usuario: this.loginService.getUserNameFromToken(),
@@ -87,7 +88,8 @@ export class ProgramadorTareasComponent implements OnInit {
         password: this.formTarea.value['passwordSuma'],
         tipo: 'EXTERNO'
       },
-      codRecinto: this.loginService.getRecintoActual().recCod
+      // codRecinto: this.loginService.getRecintoActual().recCod
+      codRecinto: recintoValue.recCod
     };
 
     const tareaCreada = new Tarea();
@@ -95,7 +97,7 @@ export class ProgramadorTareasComponent implements OnInit {
     tareaCreada.cron = this.formTarea.value['cron'];
     tareaCreada.nombre = this.formTarea.value['nombre'];
     tareaCreada.tipo = this.formTarea.value['tipo'];
-    tareaCreada.recinto = this.formTarea.value['recinto'];
+    tareaCreada.recinto = recintoValue;
 
     this.tareaService.registrar(tareaCreada)
       .subscribe((responseTarea: Tarea) => {
