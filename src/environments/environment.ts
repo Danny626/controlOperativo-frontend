@@ -4,5 +4,11 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  HOST: 'http://localhost:8080/controlOperativo-backend',
+  PATH_ROOT: '/controlOperativo',
+  REINTENTOS: 3,
+  TOKEN_AUTH_USERNAME: 'controlOperativo',
+  TOKEN_AUTH_PASSWORD: '${TOKEN_AUTH_PASSWORD}',
+  TOKEN_NAME: 'access_token'
 };
