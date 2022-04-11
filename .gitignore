@@ -43,3 +43,6 @@ Thumbs.db
 
 # environments
 /src/environments/*.ts
+
+#pass
+passwords
